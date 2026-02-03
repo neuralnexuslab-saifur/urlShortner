@@ -13,10 +13,11 @@ const newSchema = new mongoose.Schema({
     },
     visitHistory : [{timeStamp :{
         type : String
-    }}]
+    }},{timestamps:true}],
+    
 
-},
-{timestamps:true}
+}
+
 )
 
 const URL = mongoose.model("url",newSchema)
