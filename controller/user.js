@@ -1,5 +1,6 @@
 const User = require("../model/user.js")
 const { v4: uuidv4 } = require("uuid")
+const { handleCreateSessionid } = require("../services/auth.js")
 async function handleUserSignUp(req, res) {
     const { name, email, password } = req.body
     await User.create({
@@ -15,6 +16,8 @@ async function handleUserLogin(req, res) {
     const user = await User.findOne({ email, password })
     if (user) {
         const sessionId = uuidv4()
+        handleCreateSessionid(sessionId, user)
+        res.cookie("uid", sessionId)
         return res.render("home")
     } else {
         return res.render("login", { error: "Wrong user id or password" })
