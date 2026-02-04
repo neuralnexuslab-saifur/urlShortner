@@ -12,11 +12,11 @@ const newSchema = new mongoose.Schema({
         required: true 
     },
     visitHistory : [{timeStamp :{
-        type : String
-    }},{timestamps:true}],
+        type : Number
+    }}],
     
 
-}
+},{timestamps:true}
 
 )
 

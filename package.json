@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/neuralnexuslab-saifur/urlShortner#readme",
   "dependencies": {
+    "ejs": "^4.0.1",
     "express": "^5.2.1",
     "mongoose": "^9.1.5",
     "nodemon": "^3.1.11",
