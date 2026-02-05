@@ -9,17 +9,23 @@ const newSchema = new mongoose.Schema({
     },
     redirectUrl: {
         type: String,
-        required: true 
+        required: true
     },
-    visitHistory : [{timeStamp :{
-        type : Number
-    }}],
-    
+    visitHistory: [{
+        timeStamp: {
+            type: Number
+        }
+    }],
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users"
+    }
 
-},{timestamps:true}
+
+}, { timestamps: true }
 
 )
 
-const URL = mongoose.model("url",newSchema)
+const URL = mongoose.model("url", newSchema)
 
 module.exports = URL

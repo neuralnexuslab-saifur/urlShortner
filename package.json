@@ -19,8 +19,10 @@
   "homepage": "https://github.com/neuralnexuslab-saifur/urlShortner#readme",
   "dependencies": {
     "cookie-parser": "^1.4.7",
+    "discord.js": "^14.25.1",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.1.5",
     "nodemon": "^3.1.11",
     "short-id": "^0.1.0-1",

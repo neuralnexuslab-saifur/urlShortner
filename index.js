@@ -11,7 +11,7 @@ const PORT = 8001
 const urlRoute = require("./routes/url.js")
 const staticRoute = require("./routes/staticRouter.js")
 const userRoute = require("./routes/user.js")
-const { restrictToLoggedInUsero0nly } = require("./controller/middlewares/auth.js")
+const { checkForAuthentication, restrictTo } = require("./middlewares/auth.js")
 
 //connecting to Mongo DB
 connectToMongoDb("mongodb://localhost:27017/short-url")
@@ -23,6 +23,7 @@ app.set("views", path.resolve("./views"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(checkForAuthentication)
 
 //Get Url linked with shortId and update visit History
 app.get("/url/:shortId", async (req, res) => {
@@ -48,7 +49,7 @@ app.get("/test", async (req, res) => {
 
 
 
-app.use("/url", restrictToLoggedInUsero0nly ,urlRoute)
-app.use("/", staticRoute)
-app.use("/user",userRoute)
+app.use("/url", restrictTo(["NORMAL"]), urlRoute)
+app.use("/",staticRoute)
+app.use("/user", userRoute)
 app.listen(PORT, () => console.log("Server started listening at PORT "))
